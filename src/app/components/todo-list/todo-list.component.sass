@@ -1,0 +1,29 @@
+.todo-title
+    text-align: center
+
+.todo-input
+    border: 1px solid #f26921
+    border-radius: 3px
+    color: #b97450
+    outline: none
+    padding: 5px
+    transition: 0.3s all
+    &::placeholder
+        color: #8e7d74
+    &:focus, &:hover
+        border: 1px solid #f7a174
+
+.todo-items
+    margin-top: 10px
+    .todo-item
+        display: grid
+        grid-template-columns: 0fr auto
+        background-color: #21aaf2
+        margin-top: 5px
+        border: 1px solid #449ac7
+        border-radius: 3px
+        color: #e3f4fd
+        .todo-item-checkbox
+            cursor: pointer
+        .todo-item-label
+            
