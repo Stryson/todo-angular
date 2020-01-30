@@ -1,29 +1,107 @@
 .todo-title
     text-align: center
+    color: #ea7d54
+    text-transform: uppercase
 
-.todo-input
-    border: 1px solid #f26921
-    border-radius: 3px
-    color: #b97450
-    outline: none
-    padding: 5px
-    transition: 0.3s all
-    &::placeholder
-        color: #8e7d74
-    &:focus, &:hover
-        border: 1px solid #f7a174
+.todo-add
+    position: relative
+    display: flex
+    align-items: center
+    .todo-input
+        border: 1px solid #ea7d54
+        border-radius: 5px
+        color: #ea7d54
+        outline: none
+        padding: 5px 40px 5px 5px
+        transition: 0.3s all
+        background: #fff
+        font-size: 20px
+        width: 100%
+        &::placeholder
+            color: #f4beaa
+        &:focus, &:hover
+            border: 1px solid #f4beaa
+    .fa-plus-circle
+        transition: 0.3s all
+        position: absolute
+        color: #f4beaa
+        right: 11px
+        font-size: 20px
+        cursor: pointer
+        &:hover
+            color: #ea7d54
 
 .todo-items
-    margin-top: 10px
+    font-size: 20px
     .todo-item
-        display: grid
-        grid-template-columns: 0fr auto
-        background-color: #21aaf2
-        margin-top: 5px
-        border: 1px solid #449ac7
-        border-radius: 3px
-        color: #e3f4fd
-        .todo-item-checkbox
-            cursor: pointer
-        .todo-item-label
-            
+        display: flex
+        align-items: flex-start
+        transition: 0.3s all
+        background-color: #2db6e4
+        border: 1px solid #96dBf1
+        border-radius: 5px
+        color: #fff
+        padding: 5px
+        cursor: pointer
+        position: relative
+        &:hover
+            background-color: #279fc8
+        &:nth-child(n + 2)
+            margin-top: 5px
+        .fa-check-circle
+            position: absolute
+            left: -31px
+            color: #f4beaa
+            transition: 0.3s all
+            &:hover
+                color: #ea7d54
+        .fa-minus-circle
+            position: absolute
+            right: -31px
+            color: #2db6e4
+            transition: 0.3s all
+            &:hover
+                color: #279fc8
+
+.todo-toolbar
+    font-size: 16px
+    display: grid
+    grid-template-columns: auto 1fr
+    position: relative
+    color: #ea7d54
+    .fa-check-circle
+        position: absolute
+        left: -31px
+        font-size: 20px
+        color: #f4beaa
+        transition: 0.3s all
+        cursor: pointer
+        &:hover
+            color: #ea7d54
+    .todo-check
+        font-weight: bold
+        cursor: pointer
+    .todo-info
+        text-align: end
+
+.todo-filter
+    display: grid
+    grid-template-columns: 1fr auto
+    color: #ea7d54
+    font-size: 16px
+    .todo-btn
+        font-size: 16px
+        background-color: #2db6e4
+        border: 1px solid #96dBf1
+        border-radius: 5px
+        color: #fff
+        outline: none
+        cursor: pointer
+        transition: 0.3s all
+        padding: 5px
+        &:nth-child(n + 2)
+            margin-left: 5px
+        &:hover
+            background-color: #279fc8
+    .todo-btn-clear
+        display: flex
