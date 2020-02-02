@@ -11,8 +11,7 @@
         border: 1px solid #ea7d54
         border-radius: 5px
         color: #ea7d54
-        outline: none
-        padding: 5px 40px 5px 5px
+        padding: 5px 40px 5px 10px
         transition: 0.3s all
         background: #fff
         font-size: 20px
@@ -40,20 +39,37 @@
         background-color: #2db6e4
         border: 1px solid #96dBf1
         border-radius: 5px
-        color: #fff
-        padding: 5px
-        cursor: pointer
         position: relative
+        padding: 10px
         &:hover
             background-color: #279fc8
         &:nth-child(n + 2)
             margin-top: 5px
+        .todo-item-edit
+            font-size: 20px
+            color: #ea7d54
+            width: 100%
+            background-color: #fff
+            border: none
+            padding: 5px
+            resize: none
+            height: 150px
+        .todo-item-label
+            color: #fff
+            outline: none
+            width: 100%
+            transition: 0.3s all
+            &.completed
+                opacity: 0.6
         .fa-check-circle
             position: absolute
             left: -31px
             color: #f4beaa
             transition: 0.3s all
-            &:hover
+            &.check
+                &:hover
+                    color: #f4beaa
+            &.check, &:hover
                 color: #ea7d54
         .fa-minus-circle
             position: absolute
@@ -71,18 +87,25 @@
     color: #ea7d54
     .fa-check-circle
         position: absolute
-        left: -31px
+        left: -30px
         font-size: 20px
         color: #f4beaa
         transition: 0.3s all
         cursor: pointer
         &:hover
             color: #ea7d54
+        &.check
+            &:hover
+                color: #f4beaa
+        &.check, &:hover
+            color: #ea7d54
     .todo-check
         font-weight: bold
         cursor: pointer
     .todo-info
         text-align: end
+        #todo-count
+            font-weight: bold
 
 .todo-filter
     display: grid
