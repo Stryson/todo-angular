@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../interfaces/todo';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'todo-list',
@@ -21,21 +20,24 @@ export class TodoListComponent implements OnInit {
     this.todos = [
       {
         'id': 1,
-        'title': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, minima!',
+        'title': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         'completed': false,
-        'editing': false
+        'editing': false,
+        'date': new Date()
       },
       {
         'id': 2,
-        'title': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi vitae ea eius quas ut impedit voluptate ducimus quae esse perspiciatis.',
+        'title': 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque culpa beatae commodi magni vero consequatur eligendi, accusamus excepturi corrupti voluptatem nihil asperiores iste deserunt inventore minima accusantium veritatis in quibusdam?',
         'completed': false,
-        'editing': false
+        'editing': false,
+        'date': new Date()
       },
       {
         'id': 3,
-        'title': 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque culpa beatae commodi magni vero consequatur eligendi, accusamus excepturi corrupti voluptatem nihil asperiores iste deserunt inventore minima accusantium veritatis in quibusdam?',
+        'title': 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
         'completed': false,
-        'editing': false
+        'editing': false,
+        'date': new Date()
       }
     ];
 
@@ -55,7 +57,8 @@ export class TodoListComponent implements OnInit {
       id: this.idForTodo,
       title: this.todoTitle,
       completed: false,
-      editing: false
+      editing: false,
+      date: new Date()
     })
 
     this.todoTitle = '';
@@ -111,6 +114,13 @@ export class TodoListComponent implements OnInit {
   // получить количество выполненных задач.
   get completedTodos(): Array<Todo> {
     return this.todos.filter(todo => todo.completed);
+  }
+
+  // сортирует задачи по дате добавления.
+  get sortedTodos(): Array<Todo> {
+    return this.todos.sort((a, b) => {
+      return b.date.getTime() - a.date.getTime()
+    });
   }
 
   // отметить все задачи.

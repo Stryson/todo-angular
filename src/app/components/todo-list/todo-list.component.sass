@@ -1,5 +1,6 @@
 .todo-title
-    text-align: center
+    display: flex
+    justify-content: center
     color: #ea7d54
     text-transform: uppercase
 
@@ -16,6 +17,7 @@
         background: #fff
         font-size: 20px
         width: 100%
+        
         &::placeholder
             color: #f4beaa
         &:focus, &:hover
@@ -32,9 +34,11 @@
 
 .todo-items
     font-size: 20px
+    display: grid
+    grid-gap: 10px
     .todo-item
-        display: flex
-        align-items: flex-start
+        display: grid
+        grid-gap: 10px
         transition: 0.3s all
         background-color: #2db6e4
         border: 1px solid #96dBf1
@@ -43,12 +47,9 @@
         padding: 10px
         &:hover
             background-color: #279fc8
-        &:nth-child(n + 2)
-            margin-top: 5px
         .todo-item-edit
             font-size: 20px
             color: #ea7d54
-            width: 100%
             background-color: #fff
             border: none
             padding: 5px
@@ -57,13 +58,22 @@
         .todo-item-label
             color: #fff
             outline: none
-            width: 100%
             transition: 0.3s all
+            white-space: pre-wrap
+            word-break: break-all
             &.completed
                 opacity: 0.6
+        .todo-item-date
+            display: flex
+            justify-content: flex-end
+            border-top: 1px solid #f4beaa
+            padding-top: 10px
+            color: #fff
+            font-size: 16px
         .fa-check-circle
             position: absolute
             left: -31px
+            top: 9px
             color: #f4beaa
             transition: 0.3s all
             &.check
@@ -74,15 +84,26 @@
         .fa-minus-circle
             position: absolute
             right: -31px
+            top: 9px
             color: #2db6e4
             transition: 0.3s all
             &:hover
                 color: #279fc8
-
+.todo-empty
+    font-size: 20px
+    color: #ea7d54
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: 350px
+    .todo-text
+        text-transform: uppercase
+        text-align: center
 .todo-toolbar
     font-size: 16px
     display: grid
     grid-template-columns: auto 1fr
+    grid-gap: 10px
     position: relative
     color: #ea7d54
     .fa-check-circle
@@ -103,15 +124,16 @@
         font-weight: bold
         cursor: pointer
     .todo-info
-        text-align: end
+        text-align: right
         #todo-count
             font-weight: bold
 
-.todo-filter
-    display: grid
-    grid-template-columns: 1fr auto
+.todo-actions
     color: #ea7d54
     font-size: 16px
+    display: grid
+    grid-template-columns: auto 1fr
+    grid-gap: 10px
     .todo-btn
         font-size: 16px
         background-color: #2db6e4
@@ -126,5 +148,9 @@
             margin-left: 5px
         &:hover
             background-color: #279fc8
-    .todo-btn-clear
+    .todo-filter
         display: flex
+        justify-content: flex-start
+    .todo-clear
+        display: flex
+        justify-content: flex-end
