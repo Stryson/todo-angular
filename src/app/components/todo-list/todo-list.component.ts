@@ -1,20 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../interfaces/todo';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.sass']
+  styleUrls: ['./todo-list.component.sass'],
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-30px)' }),
+        animate(300, style({
+          opacity: 1, transform: 'translateY(0px)'
+        }))
+      ]),
+
+      transition(':leave', [
+        animate(300, style({
+          opacity: 0, transform: 'translateX(30px)'
+        }))
+      ])
+    ])
+  ]
 })
+
 export class TodoListComponent implements OnInit {
   todos: Todo[];
   todoTitle: string;
   idForTodo: number;
   beforeEditCache: string;
+  filter: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.filter = 'all';
     this.beforeEditCache = '';
     this.todoTitle = '';
     this.todos = [
@@ -112,14 +132,22 @@ export class TodoListComponent implements OnInit {
   }
 
   // получить количество выполненных задач.
-  get completedTodos(): Array<Todo> {
+  get completedTodos(): Todo[] {
     return this.todos.filter(todo => todo.completed);
   }
 
-  // сортирует задачи по дате добавления.
-  get sortedTodos(): Array<Todo> {
+  // отсортировать задачи по заданному фильтру и дате добавления.
+  get sortedTodos(): Todo[] {
     return this.todos.sort((a, b) => {
       return b.date.getTime() - a.date.getTime()
+    }).filter(todo => {
+      if (this.filter === 'all') {
+        return true
+      } if (this.filter === 'active') {
+        return !todo.completed
+      } else if (this.filter === 'completed') {
+        return todo.completed
+      }
     });
   }
 

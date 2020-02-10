@@ -63,13 +63,25 @@
             word-break: break-all
             &.completed
                 opacity: 0.6
-        .todo-item-date
-            display: flex
-            justify-content: flex-end
+        .todo-item-panel
             border-top: 1px solid #f4beaa
             padding-top: 10px
-            color: #fff
+            display: grid
+            grid-template-columns: auto 1fr
+            grid-gap: 10px
             font-size: 16px
+            color: #fff
+            .todo-item-button
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                .todo-item-text
+                    cursor: pointer
+            .todo-item-date
+                display: flex
+                justify-content: flex-end
+                align-items: center
+                text-align: right
         .fa-check-circle
             position: absolute
             left: -31px
@@ -77,9 +89,6 @@
             color: #f4beaa
             transition: 0.3s all
             &.check
-                &:hover
-                    color: #f4beaa
-            &.check, &:hover
                 color: #ea7d54
         .fa-minus-circle
             position: absolute
@@ -96,7 +105,7 @@
     justify-content: center
     align-items: center
     min-height: 350px
-    .todo-text
+    .todo-empty-text
         text-transform: uppercase
         text-align: center
 .todo-toolbar
@@ -113,12 +122,7 @@
         color: #f4beaa
         transition: 0.3s all
         cursor: pointer
-        &:hover
-            color: #ea7d54
         &.check
-            &:hover
-                color: #f4beaa
-        &.check, &:hover
             color: #ea7d54
     .todo-check
         font-weight: bold
@@ -134,23 +138,30 @@
     display: grid
     grid-template-columns: auto 1fr
     grid-gap: 10px
-    .todo-btn
-        font-size: 16px
-        background-color: #2db6e4
-        border: 1px solid #96dBf1
-        border-radius: 5px
-        color: #fff
-        outline: none
-        cursor: pointer
-        transition: 0.3s all
-        padding: 5px
-        &:nth-child(n + 2)
-            margin-left: 5px
-        &:hover
-            background-color: #279fc8
     .todo-filter
         display: flex
         justify-content: flex-start
+        .todo-btn
+            background-color: #fff
+            border: 1px solid #96dBf1
+            color: #2db6e4
+            &:nth-child(n + 2)
+                margin-left: 5px
+            &.active
+                background-color: #2db6e4
+                color: #fff
     .todo-clear
         display: flex
         justify-content: flex-end
+        .todo-btn
+            background-color: #fff
+            border: 1px solid #f4beaa
+            color: #ea7d54
+@media only screen and (max-width: 576px)
+    .todo-actions
+        grid-template-columns: auto
+        grid-gap: 5px
+        .todo-filter
+            justify-content: center
+        .todo-clear
+            justify-content: center
